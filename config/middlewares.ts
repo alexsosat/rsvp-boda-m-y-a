@@ -10,9 +10,9 @@ const config: Core.Config.Middlewares = [
         useDefaults: true,
         directives: {
           "connect-src": ["'self'", "https:"],
-          "script-src": ["https://cdnjs.cloudflare.com"],
-          "media-src": ["https://cdnjs.cloudflare.com"],
-          "img-src": ["https://cdnjs.cloudflare.com"],
+          "script-src": ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
+          "media-src": ["'self'", "https://cdnjs.cloudflare.com"],
+          "img-src": ["'self'", "data:", "blob:", "https://cdnjs.cloudflare.com"],
         },
       },
     },
