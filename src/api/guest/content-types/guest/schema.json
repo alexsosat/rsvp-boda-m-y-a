@@ -11,28 +11,44 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "nombre": {
       "type": "string",
       "required": true
     },
-    "phone": {
+    "celular": {
       "type": "customField",
-      "private": true,
       "customField": "plugin::strapi-phone-validator-5.phone",
+      "options": {
+        "country": "mx"
+      },
       "required": true
     },
-    "assist": {
+    "rsvp_status": {
       "type": "enumeration",
-      "private": true,
       "required": true,
       "default": "Pendiente",
       "enum": [
         "Pendiente",
-        "Acepto",
-        "Cancelo"
+        "Completado"
       ]
     },
-    "invitation": {
+    "comida": {
+      "type": "enumeration",
+      "required": false,
+      "enum": [
+        "Vegetariana",
+        "Carnivora"
+      ]
+    },
+    "asistencia": {
+      "type": "enumeration",
+      "private": true,
+      "enum": [
+        "Acepto",
+        "Declino"
+      ]
+    },
+    "invitacion": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::invitation.invitation",

@@ -441,26 +441,32 @@ export interface ApiGuestGuest extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    assist: Schema.Attribute.Enumeration<['Pendiente', 'Acepto', 'Cancelo']> &
+    asistencia: Schema.Attribute.Enumeration<['Acepto', 'Declino']> &
+      Schema.Attribute.Private;
+    celular: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Private &
-      Schema.Attribute.DefaultTo<'Pendiente'>;
+      Schema.Attribute.CustomField<
+        'plugin::strapi-phone-validator-5.phone',
+        {
+          country: 'mx';
+        }
+      >;
+    comida: Schema.Attribute.Enumeration<['Vegetariana', 'Carnivora']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    invitation: Schema.Attribute.Relation<
+    invitacion: Schema.Attribute.Relation<
       'manyToOne',
       'api::invitation.invitation'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::guest.guest'> &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    phone: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Private &
-      Schema.Attribute.CustomField<'plugin::strapi-phone-validator-5.phone'>;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    rsvp_status: Schema.Attribute.Enumeration<['Pendiente', 'Completado']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Pendiente'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
