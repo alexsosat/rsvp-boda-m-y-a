@@ -8,11 +8,8 @@ export default {
   routes: [
     {
       method: 'POST',
-      path: '/',
+      path: '/rsvps',
       handler: 'rsvp.submit',
-      config: {
-        auth: true,
-      },
     },
   ],
 };
