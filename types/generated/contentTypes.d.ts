@@ -503,6 +503,30 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRsvpRsvp extends Struct.CollectionTypeSchema {
+  collectionName: 'rsvps';
+  info: {
+    displayName: 'RSVP';
+    pluralName: 'rsvps';
+    singularName: 'rsvp';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::rsvp.rsvp'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1016,6 +1040,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::guest.guest': ApiGuestGuest;
       'api::invitation.invitation': ApiInvitationInvitation;
+      'api::rsvp.rsvp': ApiRsvpRsvp;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

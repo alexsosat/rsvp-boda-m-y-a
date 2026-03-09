@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rsvps",
+  "info": {
+    "singularName": "rsvp",
+    "pluralName": "rsvps",
+    "displayName": "RSVP"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}
